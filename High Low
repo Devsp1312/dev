@@ -1,0 +1,29 @@
+Time_t second; 
+	time(&seconds);
+	srand((unsigned int)seconds);
+	int number,input,counter = 0;
+	char letter;
+	do
+	{
+    	number = rand()%100+1;
+    	counter = 0;
+    	do
+    	{
+        	cout<< "guesses the number : ";
+        	cin>>input;
+        	counter++;
+        	if(input<number)
+            	cout<<"Too Low"<<endl;
+        	else if (input> number)
+            	cout<<"Too High"<<endl;
+        	else if ( number == input)
+            	cout<<"Correct"<< endl;
+    	}while(counter < 7 && number != input);
+    	if(number == input)
+        	cout<<"correct! it took you " << counter << " guesses!" <<endl;
+    	else
+        	cout<<"sorry,you lose! The secret number was "<< number  <<endl;
+
+    	cout<<"To play again enter Y or to quit enter N" << endl;
+    	cin>>letter;
+	}while(letter != 'N' && letter != 'n');
