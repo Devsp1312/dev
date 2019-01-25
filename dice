@@ -1,0 +1,37 @@
+#include<time.h>
+#include<cstdlib>
+#include<iostream>
+#include<iomanip>
+using namespace std;
+
+int main()
+{
+   time_t seconds;
+  time(&seconds);
+  srand((unsigned int)seconds);
+  
+   int num1[11],dice1=0,dice2=0,roll = 0 ,number = 0,counter=2,counter2 =0;
+   cout<<"enter the number of roll:" << endl;
+   cin>>roll;
+  
+   for(int i = 0; i < 11 ; i++)
+       num1[i] = 0;
+      
+   for(int i = 0; i <= roll; i++)
+        {
+        dice1 = rand() % 6 + 1;
+        dice2 = rand() % 6 + 1;
+        number = dice1 + dice2;
+        num1[number - 1]++;
+        }
+       
+   for(int i = 0 ;i<11;i++ )
+     {
+      cout.precision(4);
+     cout.setf(ios::right);
+    cout<<setw(10)<<counter<<setw(10)<<num1[counter2]<<setw(10)<< float(num1[i])/roll * 100 <<endl;
+    counter2++;
+    counter ++;
+     }
+  return 0;
+}
