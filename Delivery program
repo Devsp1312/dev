@@ -1,0 +1,41 @@
+int pound, left, ounces;
+	float total;
+	char choice ;
+	cout << "Enter the Weight of the package in ounces: " ;
+	cin>> ounces ;
+	cout << endl << "shipping choices :" <<'\n'<< '\n'<< "S. Standard Mail" << '\n' << "P. Priority Mail" << '\n' << "E. Express Mail" << '\n' << "Q. Quit " << '\n'<< endl;
+	cout << "Enter Selection :" ;
+	cin>> choice ;
+
+	switch (choice)
+	{
+    	case 's':
+    	case 'S':
+        	if(ounces <= 8.0)
+            	total = 0.40;
+        	else
+            	total = ((ounces - 8) * .10) + .40;
+        	break;
+    	case 'p':
+    	case 'P':
+        	if (ounces <= 16)
+            	total = 4.95;
+        	else
+            	total = 4.95 + ((((ounces - 16) + 2) / 3) * 1.00)   ;
+        	break;
+    	case 'E':
+    	case 'e':
+        	pound = (ounces + 15)/16;
+        	if (pound<=5)
+            	total = 10.95 * pound ;
+        	else
+            	total = (((pound-5)*7.95)+54.75);
+        	break;
+    	case 'Q':
+    	case 'q':
+        	return 0;
+        	break;
+	}
+	cout.setf(ios :: fixed);
+	cout.precision(2);
+	cout << "Your package costs $"<< total<< "   "<< endl;
