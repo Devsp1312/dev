@@ -1,0 +1,60 @@
+//1/17/2019
+//Dev Patel
+//a simple grade book for three students using a 2d Array
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int main()
+{
+    int NUM_STUDENTS = 3, NUM_GRADES = 3;
+	int num[NUM_STUDENTS][NUM_GRADES], counter = 0 , total = 0;
+	string name[NUM_STUDENTS];
+
+	for(int j = 0 ; j < NUM_STUDENTS ; j ++ )
+	{
+	    cout<<"Enter the name of the student:";
+	    cin>>name[j];
+    	for(int i = 0 ; i < NUM_GRADES; i++)
+    	{
+        	cout<<"Enter MP "<< i +1 <<" grade for student "<<name[j]<< ": ";
+        	cin>>num[j][i];
+    	}
+    	cout<<'/n';
+	}
+
+	cout.setf(ios::fixed);
+	cout.precision(2);
+
+	cout<<setw(10)<<"Student";
+
+	for(int i = 0; i < NUM_GRADES ; i ++)
+    {
+    //need SETW(4) because there is one more character at the end
+        cout<<setw(4)<<"MP"<<i +1;
+    }
+
+    cout<<setw(10)<<"avg"<<endl;
+	cout<<setw(10)<<"----------";
+
+	for(int i = 0; i < NUM_GRADES ; i ++)
+    {
+        cout<<setw(5)<<"-----";
+    }
+
+    cout<<setw(10)<<"-----"<<endl;
+
+	for(int i = 0 ; i < NUM_STUDENTS; i++)
+	{
+    	cout<< setw(10)<< name[i];
+    	for(int j = 0;j < NUM_GRADES; j++)
+    	{
+        	cout<<setw(5)<<num[i][j];
+        	total+= num[i][j];
+        }
+        cout<<setw(10)<<float(total)/4<<endl;
+    	total = 0 ;
+	}
+	
+	//cout<<"1234512345123451234512345123451234512345123451234512345"<<endl;
+	return 0;
+}
