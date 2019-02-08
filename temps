@@ -1,0 +1,44 @@
+//Dev Patel
+//2/8/2019
+//Temperature Conversion Program
+#include <iostream>
+#include<iomanip>
+float FToc (float),Ctof (float);
+using namespace std;
+int main()
+{
+    float temp,conveted ;
+    char letter;
+
+    cout << "Enter the temperature: " ;
+    cin >> temp;
+    cout <<"Was that in (F)ahrenheit or (C)elsius:";
+    cin >> letter;
+
+    if(letter == 'f' || 'F')
+       {
+        conveted = FToc(convert);
+        cout<<"That temperature is" <<convert<<"degrees Fahrenheit."<<endl;
+       }
+    else if (letter == 'c' || 'C')
+    {
+        conveted = Ctof(convert);
+        cout<<"That temperature is" <<convert<<"degrees Celsius."<<endl;
+    }
+    else
+        cout<<"Enter a valid letter next time"<<endl;
+    
+    return 0;
+}
+float Ftoc(float temp)
+{
+    int convert
+    convert = (5.0/9.0)*(temp - 32);
+    return convert;
+}
+float Ctof(float temp)
+{
+    int convert
+    convert=((9.0/5.0)*temp) + 32);
+    return convert;
+}
