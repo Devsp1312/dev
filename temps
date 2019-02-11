@@ -3,8 +3,12 @@
 //Temperature Conversion Program
 #include <iostream>
 #include<iomanip>
-float FToc (float),Ctof (float);
+
+float Ftoc(float);
+float Ctof(float);
+
 using namespace std;
+
 int main()
 {
     float temp,conveted ;
@@ -15,30 +19,36 @@ int main()
     cout <<"Was that in (F)ahrenheit or (C)elsius:";
     cin >> letter;
 
-    if(letter == 'f' || 'F')
+    cout.precision(1);
+    cout.setf(ios::fixed);
+
+    if(letter == 'f' || letter == 'F')
        {
-        conveted = FToc(convert);
-        cout<<"That temperature is" <<convert<<"degrees Fahrenheit."<<endl;
+        conveted = Ftoc(temp);
+        cout<<"That temperature is " <<conveted<<" degrees Celsius."<<endl;
        }
-    else if (letter == 'c' || 'C')
-    {
-        conveted = Ctof(convert);
-        cout<<"That temperature is" <<convert<<"degrees Celsius."<<endl;
-    }
+    else if (letter == 'c' || letter == 'C')
+        {
+        conveted = Ctof(temp);
+        cout<<"That temperature is " <<conveted<<" degrees Fahrenheit ."<<endl;
+        }
     else
-        cout<<"Enter a valid letter next time"<<endl;
-    
+        cout<<"Enter a valid temperature type next time"<<endl;
+
     return 0;
 }
+
 float Ftoc(float temp)
 {
-    int convert
-    convert = (5.0/9.0)*(temp - 32);
+    float convert;
+    convert = ((5.0/9.0)*(temp-32));
     return convert;
 }
+
 float Ctof(float temp)
 {
-    int convert
-    convert=((9.0/5.0)*temp) + 32);
+    float convert;
+    convert=(((9.0/5.0)*temp) + 32.0);
+
     return convert;
 }
