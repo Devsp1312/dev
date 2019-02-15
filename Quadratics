@@ -1,0 +1,54 @@
+//Dev Patel
+//2/15/2019
+//this program, you will be using an old Algebra I rule to determine the number of real roots that a quadratic equation has.
+#include <iostream>
+
+
+using namespace std;
+float discriminant(float &  , float &  , float & );
+void getValues( float &  , float &  , float &  );
+float numRoots(float & );
+
+int main()
+{
+    float  a , b , c ,d , root;
+
+    getValues(a,b,c);
+    d = discriminant(d);
+    root = numRoots(d);
+
+    cout<<"The solution has"<<root <<" real root"<<endl;
+    return 0;
+}
+
+void getValues(float & a , float & b , float & c )
+{
+
+    cout<<"Enter the value of A:"<<endl;
+    cin>>a;
+    cout<<"Enter the value of B:"<<endl;
+    cin>>b;
+    cout<<"Enter the value of C:"<<endl;
+    cin>>c;
+}
+
+float discriminant(float & a , float & b , float & c)
+{
+    float d;
+    d = (b*b - (4*a*c));
+    return d;
+}
+
+float numRoots(float d)
+{
+    int root;
+    if ( d > 0)
+    root = 2;
+    else if ( d =0 )
+    root = 1;
+    else if(d < 0) d
+    root = 0;
+
+    return root;
+
+}
