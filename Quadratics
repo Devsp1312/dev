@@ -14,21 +14,21 @@ int main()
     float  a , b , c ,d , root;
 
     getValues(a,b,c);
-    d = discriminant(d);
+    d = discriminant(a,b,c);
     root = numRoots(d);
-
-    cout<<"The solution has"<<root <<" real root"<<endl;
+    cout<<" The discriminant is " <<d<<endl;
+    cout<<"The solution has "<<root <<" real root"<<endl;
     return 0;
 }
 
 void getValues(float & a , float & b , float & c )
 {
 
-    cout<<"Enter the value of A:"<<endl;
+    cout<<"Enter the value of A:";
     cin>>a;
-    cout<<"Enter the value of B:"<<endl;
+    cout<<"Enter the value of B:";
     cin>>b;
-    cout<<"Enter the value of C:"<<endl;
+    cout<<"Enter the value of C:";
     cin>>c;
 }
 
@@ -39,14 +39,14 @@ float discriminant(float & a , float & b , float & c)
     return d;
 }
 
-float numRoots(float d)
+float numRoots(float & d)
 {
     int root;
     if ( d > 0)
     root = 2;
     else if ( d =0 )
     root = 1;
-    else if(d < 0) d
+    else if(d < 0)
     root = 0;
 
     return root;
