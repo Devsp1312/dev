@@ -5,59 +5,62 @@
 #include <math.h>
 
 using namespace std;
-float discriminant(float &a, float &b, float &c, float &d);
+float discriminant(float a, float b, float c );
 void getValues( float &a, float &b, float &c);
-float numRoots(float &d);
+float numRoots(float d);
+void getRoots(float, float, float ,float& , float&);
 
-int main()
-{
-int num = 1;
-   do
-    {
-    float  a , b , c ,d , root;
-
-    getValues(a,b,c);
-    d = discriminant(a,b,c,d);
+int main(){
+    float a, b, c, d, X1, X2;
+    int root;
+    getValues(a, b, c);
+    d = discriminant(a, b, c);
     root = numRoots(d);
 
-    cout<<"The discriminant is " <<d<<endl;
-    cout<<"The solution has "<<root <<" real root"<<endl;
-    }
+    cout << "The discriminant is " << d <<endl;
+    cout << "The solution has " << root << " real root" << endl;
+    cout << "The X1 is " << X1 << "and the X2 is " << X2 << endl;
+    return 0;
+}
 
-    while (num = 1 );
+void getValues(float & a , float & b , float & c){
+  cout << "Enter the value of A: ";
+  cin >> a;
+  cout << "Enter the value of B: ";
+  cin >> b;
+  cout << "Enter the value of C: ";
+  cin >> c;
+}
+
+float discriminant(float  a , float  b , float  c){
+  float d = ((pow(b,2) - (4*a*c)));
+  return d;
+}
+
+float numRoots(float  d){
+    if(d > 0)
+        return 2;
+    else if(d == 0)
+        return 1;
 
     return 0;
 }
 
-void getValues(float & a , float & b , float & c )
-{
+void getRoots(float a, float b, float c, float & X1, float & X2){
+  float d;
+  d = discriminant(a,b,c);
+  int n = numRoots(d);
 
-    cout<<"Enter the value of A: ";
-    cin>>a;
-    cout<<"Enter the value of B: ";
-    cin>>b;
-    cout<<"Enter the value of C: ";
-    cin>>c;
+  if (n > 0){
+      X1 = ((-b) + (sqrt(pow(b,2) - (4*a*c))/(2*a)));
+      X2 = ((b) + (sqrt(pow(b,2) - (4*a*c))/(2*a)));
+  }
+  else if (n == 0){
+     X1 = ((b) + (sqrt(pow(b,2) - (4*a*c))/(2*a)));
+     X2 = X1;
+  }
+  else{
+    X1 = -999.9;
+    X2 = X1;
+  }
 }
-
-float discriminant(float & a , float & b , float & c,float & d)
-{
-
-    d = ((pow(b,2) - (4*a*c)));
-    return d;
-}
-
-float numRoots(float & d)
-{
-    int root;
-    if ( d > 0)
-    root = 2;
-    else if ( d == 0 )
-    root = 1;
-    else if(d < 0)
-    root = 0;
-
-    return root;
-
-}
-
