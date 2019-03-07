@@ -16,25 +16,26 @@ int main(){
     getValues(a, b, c);
     d = discriminant(a, b, c);
     root = numRoots(d);
+    getRoots(a,b,c,X1,X2);
 
     cout << "The discriminant is " << d <<endl;
     cout << "The solution has " << root << " real root" << endl;
-    cout << "The X1 is " << X1 << "and the X2 is " << X2 << endl;
+    cout << "The X1 is " << X1 << " and the X2 is " << X2 << endl;
     return 0;
 }
 
 void getValues(float & a , float & b , float & c){
-  cout << "Enter the value of A: ";
-  cin >> a;
-  cout << "Enter the value of B: ";
-  cin >> b;
-  cout << "Enter the value of C: ";
-  cin >> c;
+    cout << "Enter the value of A: ";
+    cin >> a;
+    cout << "Enter the value of B: ";
+    cin >> b;
+    cout << "Enter the value of C: ";
+    cin >> c;
 }
 
 float discriminant(float  a , float  b , float  c){
-  float d = ((pow(b,2) - (4*a*c)));
-  return d;
+    float d = ((pow(b,2) - (4*a*c)));
+    return d;
 }
 
 float numRoots(float  d){
@@ -47,21 +48,19 @@ float numRoots(float  d){
 }
 
 void getRoots(float a, float b, float c, float & X1, float & X2){
-  float d;
-  d = discriminant(a,b,c);
-  int n = numRoots(d);
+    float d = discriminant(a,b,c);
+    int n = numRoots(d);
 
-  if (n == 2){
-      X1 = ((-b) + (sqrt(d)))/(2*a);
-      X2 = ((-b) - (sqrt(d)))/(2*a);
-
-  }
-  else if (n == 1){
-     X1 = ((b) + (sqrt(d))/(2*a));
-     X2 = X1;
-  }
-  else{
-    X1 = -999.9;
-    X2 = X1;
-  }
+    if (n == 2){
+        X1 = ((-b) + sqrt(d))/(2.0*a);
+        X2 = ((-b) - sqrt(d))/(2.0*a);
+    }
+    else if (n == 1){
+        X1 = ((-b))/(2.0*a);
+        X2 = X1;
+    }
+    else{
+        X1 = -999.9;
+        X2 = -999.9;
+    }
 }
