@@ -1,0 +1,56 @@
+#include <iostream>
+#include <time.h>
+#include <cstdlib>
+void resetGame();
+const int fireShot = 4, numHit = 4; 
+char grid[fireShot][numHit];
+void display();
+using namespace std; 
+
+int main()
+{ 
+  time_t seconds;
+  time (& seconds);
+  srand((unsigned int) seconds);
+  resetGame(); 
+  display();
+  return 0; 
+}
+
+void resetGame()
+{
+  int num1 = 0 , num2 = 0,counter = 0 ;  
+
+    for(int i = 0; i < 5; i++)
+    {
+      for(int j = 0; j < 5; j++)
+      {
+       grid[i][j] = '.';
+      }
+    }
+
+ /* do
+  {
+    num1= rand()%(5);
+    num2 = rand()%(5);
+    if (grid[num1][num2] != 's')
+     {
+       grid[num1][num2] = 'S';
+       counter++;
+     } 
+    num1= 0;
+    num2 = 0;
+  }while(counter < 5);*/
+}
+
+void display()
+{
+  for(int i = 0; i < 5;i ++)
+  {
+    for(int j = 0;j < 5;j++)
+    {
+      cout<<grid[i][j];
+    }
+  cout<<" "<< endl;
+  }
+}
