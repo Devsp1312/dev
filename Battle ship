@@ -1,25 +1,50 @@
 #include <iostream>
 #include <time.h>
 #include <cstdlib>
-void resetGame();
-const int fireShot = 4, numHit = 4; 
-char grid[fireShot][numHit];
-void display();
-using namespace std; 
 
+void resetGame();
+void display(bool);
+const int fireShot = 5, numHit = 5;
+char grid[fireShot][numHit];
+bool hide = true;
+
+using namespace std;
 int main()
-{ 
-  time_t seconds;
-  time (& seconds);
-  srand((unsigned int) seconds);
-  resetGame(); 
-  display();
-  return 0; 
+{
+    int row, column;
+  resetGame();
+  display(hide);
+    do
+    {
+    cout<<"Enter Row = ";
+    cin>>row;
+    cout<<"Enter Column = ";
+    cin>>column;
+
+  if(grid[row][column] == 'S')
+    {
+        grid[row][column]='X';
+        cout<<"HIT"<<endl;
+    }
+    else
+    {
+    grid[row][column]='O';
+    display(hide);
+    cout<<"MISS"<<endl;
+    }
+    
+    }while
+  
+  return 0;
 }
 
 void resetGame()
 {
-  int num1 = 0 , num2 = 0,counter = 0 ;  
+time_t seconds;
+time (& seconds);
+srand((unsigned int) seconds);
+
+    int num1 = 0 , num2 = 0,counter = 0 ;
 
     for(int i = 0; i < 5; i++)
     {
@@ -29,28 +54,33 @@ void resetGame()
       }
     }
 
- /* do
-  {
-    num1= rand()%(5);
+    do
+    {
+    num1 = rand()%(5);
     num2 = rand()%(5);
-    if (grid[num1][num2] != 's')
+
+    if (grid[num1][num2] != 'S')
      {
-       grid[num1][num2] = 'S';
-       counter++;
-     } 
-    num1= 0;
-    num2 = 0;
-  }while(counter < 5);*/
+        grid[num1][num2] = 'S';
+        counter++;
+     }
+  }while(counter < 5);
+
+
 }
 
-void display()
+void display(bool)
 {
   for(int i = 0; i < 5;i ++)
   {
     for(int j = 0;j < 5;j++)
     {
-      cout<<grid[i][j];
+        if (hide == true && grid[i][j] == 'S')
+            cout<<'.';
+        else
+            cout<<grid[i][j];
     }
   cout<<" "<< endl;
   }
 }
+
