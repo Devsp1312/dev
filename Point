@@ -1,0 +1,69 @@
+//Dev Patel
+//3/25/2019
+//point on a coordinate plane can be represented by two values, an x-coordinate and a y-coordinate
+#include <iostream>
+#include<math.h>
+
+
+struct Point
+  {
+      int x ,y;
+  };
+int getQuadrant(Point p);
+//post: returns which quadrant p is in, or 0 if it lies on an axis
+float getSlope(Point p1, Point p2);
+
+
+
+
+
+using namespace std;
+int main()
+{
+
+    Point p1, p2, p3, p4;
+    //P1 (3, 4), P2 (0, 0), P3 (-4, 5), P4 (3, 5)
+
+    p1.x = 3;
+    p1.y = 4;
+    p2.x = 0;
+    p2.y = 0;
+    p3.x = -4;
+    p3.y = 5;
+    p4.x = 3;
+    p4.y = 5;
+
+   cout<<getQuadrant(p4)<<endl;
+   cout<<getSlope(p1,p2)<<endl;
+
+   cout<<getSlope(p4,p1)<<endl;
+    return 0;
+}
+//void display(Point p)
+//post: Display (using cout) point p as an ordered pair, or “(x, y)”
+
+int getQuadrant(Point p)
+{//post: returns which quadrant p is in, or 0 if it lies on an axis
+
+   if (p.x > 0)
+   {
+       if (p.y > 0)
+        return 1;
+       else
+        return 4;
+   }
+   else if (p.x < 0)
+   {
+       if (p.y > 0)
+        return 2;
+       else
+         return 3;
+   }
+
+}
+float getSlope(Point p1, Point p2 )
+{
+    return (float(p2.y-p1.y)/(p2.x-p1.x));
+
+    //return (float(p4.y-p1.y)/(p4.x-p1.x));
+}
