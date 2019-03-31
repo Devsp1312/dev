@@ -10,12 +10,9 @@ struct Point
       int x ,y;
   };
 int getQuadrant(Point p);
-//post: returns which quadrant p is in, or 0 if it lies on an axis
 float getSlope(Point p1, Point p2);
-
-
-
-
+float getDistance(Point p1, Point p2);
+float getMidpoint(Point p1, Point p2);
 
 using namespace std;
 int main()
@@ -35,8 +32,14 @@ int main()
 
    cout<<getQuadrant(p4)<<endl;
    cout<<getSlope(p1,p2)<<endl;
-
    cout<<getSlope(p4,p1)<<endl;
+   cout<<getSlope(p3,p4)<<endl;
+   cout<<endl;
+   cout<<getDistance(p1,p2)<<endl;
+   cout<<getDistance(p3,p4)<<endl;
+   cout<<endl;
+   cout<<getMidpoint(p3,p4)<<endl;
+   cout<<getMidpoint(p1,p2)<<endl;
     return 0;
 }
 //void display(Point p)
@@ -66,4 +69,19 @@ float getSlope(Point p1, Point p2 )
     return (float(p2.y-p1.y)/(p2.x-p1.x));
 
     //return (float(p4.y-p1.y)/(p4.x-p1.x));
+}
+float getDistance(Point p1, Point p2)
+//post: returns the distance (using distance formula from algebra)
+{
+   return (sqrt((p2.x - p1.x)*2+((p2.y - p1.y)*2)));
+}
+float getMidpoint(Point p1, Point p2)
+//post: returns the midpoint of p1 and p2
+{
+    float a ,b;
+
+    a = ((p1.x + p2.x)/2.0);
+    b = ((p1.y + p2.y)/2.0);
+
+    return a, b;
 }
