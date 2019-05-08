@@ -1,0 +1,123 @@
+//Circlr cpp
+#include <iostream>
+#include "Circle.h"
+#include <math.h>
+using namespace std;
+
+Circle::Circle()
+:radius(1.0)
+{}
+Circle::Circle(double r)
+:radius(r)
+{}
+Circle::Circle(const Circle & other)
+:radius(other.radius)
+{}
+
+double Circle::getRadius()
+{
+    return radius;
+}
+double Circle::getArea()
+{
+    return PI*pow(radius,2);
+}
+double Circle::getCircumference()
+{
+    return 2* PI*radius;
+}
+double Circle::getDiameter()
+{
+    return radius * 2;
+}
+bool Circle::isCongruent(Circle & other)
+{
+    if(radius == other.radius)
+        return true;
+    else
+        return false;
+}
+ void Circle::setRadius(double r)
+{
+    if(radius>0)
+        radius = r;
+    else if(radius < 0)
+        radius = r/-1;
+
+}
+  void Circle::setDiameter(double d)
+{
+    if(d>0)
+        radius = (d/2);
+    else if(d < 0)
+        radius = (d/-2);
+
+}
+----------------------------------------------------------------------------------------------------------------------------------------
+
+#include <iostream>
+#include "Circle.h"
+
+using namespace std;
+
+
+int main()
+{
+    Circle c1;
+    Circle c2(3);
+    Circle c3(5.6);
+    Circle c4(c2);
+
+    double rad;
+
+    cout << "The radius of c1 is: " << c1.getRadius() << endl;
+    cout << "The diameter of c2 is: "<< c2.getDiameter() << endl;
+    cout << "The area of c4 is: " << c4.getArea() << endl;
+    cout << "Is c2 congruent to c4?: " << c2.isCongruent(c4) << endl;
+    cout << "... Now setting c2's diameter to 12 ..." << endl;
+    c2.setDiameter(12);
+    cout << "c2's radius is now: " << c2.getRadius() << endl;
+    cout << "c3's circumference is: " << c3.getCircumference() << endl;
+    cout << "Enter a new radius for c1: ";
+    cin >> rad;
+    c1.setRadius(rad);
+    cout << "c1's new area is: " << c1.getArea() << endl;
+    cout << "GREAT JOB!\a\a\n";
+
+    return 0;
+}
+----------------------------------------------------------------------------------------------------------------------------------------
+
+
+#ifndef _CIRCLE_H_
+#define _CIRCLE_H_
+
+const double PI = 3.141592653589793;
+
+class Circle
+{
+  public:
+
+  //CONSTRUCTORS
+  Circle();
+  Circle(double r);
+  Circle(const Circle & other); //Copy Constructor
+
+  //ACCESSOR FUNCTIONS
+  double getRadius();
+  double getArea();
+  double getCircumference();
+  double getDiameter();
+  bool isCongruent(Circle & other);
+
+  //MODIFIER FUNCTIONS
+  void setRadius(double r);
+  void setDiameter(double d);
+
+  private:
+
+  double radius;
+
+};
+
+#endif
